@@ -1222,6 +1222,7 @@ export default {
           node.showAllChildrenOnSearch = false
           node.isMatched = false
           node.hasMatchedDescendants = false
+
           this.localSearch.countMap[node.id] = {
             [ALL_CHILDREN]: 0,
             [ALL_DESCENDANTS]: 0,
@@ -1545,7 +1546,9 @@ export default {
             ? lowerCased.label
             : parentNode.nestedSearchLabel + ' ' + lowerCased.label
 
-          const normalized = this.forest.nodeMap[id] = createMap()
+          this.forest.nodeMap[id] = createMap()
+
+          const normalized = this.forest.nodeMap[id]
           normalized.id = id
           normalized.label = label
           normalized.level = level

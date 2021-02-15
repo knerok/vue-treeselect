@@ -14,16 +14,14 @@
       },
     },
 
-    render(_, context) {
-      const { props, children } = context
-
+    render() {
       return (
-        <div class={`vue-treeselect__tip vue-treeselect__${props.type}-tip`}>
+        <div class={`vue-treeselect__tip vue-treeselect__${this.type}-tip`}>
           <div class="vue-treeselect__icon-container">
-            <span class={`vue-treeselect__icon-${props.icon}`} />
+            <span class={`vue-treeselect__icon-${this.icon}`} />
           </div>
-          <span class={`vue-treeselect__tip-text vue-treeselect__${props.type}-tip-text`}>
-            {children}
+          <span class={`vue-treeselect__tip-text vue-treeselect__${this.type}-tip-text`}>
+            {this.$slots.default()}
           </span>
         </div>
       )

@@ -1,4 +1,5 @@
 <script>
+  import { Transition } from 'vue'
   import { UNCHECKED, INDETERMINATE, CHECKED } from '../constants'
   import { onLeftClick } from '../utils'
   import Tip from './Tip'
@@ -26,7 +27,6 @@
 
       shouldShow() {
         const { instance, node } = this
-
         return instance.shouldShowOptionInMenu(node)
       },
     },
@@ -73,7 +73,6 @@
         const { instance, node } = this
 
         if (instance.shouldFlattenOptions && this.shouldShow) return null
-
         if (node.isBranch) {
           const transitionProps = {
             props: {
@@ -88,9 +87,9 @@
 
           return (
             <div class="vue-treeselect__option-arrow-container" onMousedown={this.handleMouseDownOnArrow}>
-              <transition {...transitionProps}>
+              <Transition {...transitionProps}>
                 <ArrowIcon class={arrowClass} />
-              </transition>
+              </Transition>
             </div>
           )
         }
@@ -180,7 +179,6 @@
           labelClassName,
           countClassName,
         })
-
         return (
           <label class={labelClassName}>
             {node.label}
@@ -248,7 +246,6 @@
 
       handleMouseDownOnArrow: onLeftClick(function handleMouseDownOnOptionArrow() {
         const { instance, node } = this
-
         instance.toggleExpanded(node)
       }),
 
@@ -264,7 +261,6 @@
 
       handleMouseDownOnRetry: onLeftClick(function handleMouseDownOnRetry() {
         const { instance, node } = this
-
         instance.loadChildrenOptions(node)
       }),
     },
@@ -286,9 +282,9 @@
         <div class={listItemClass}>
           {this.renderOption()}
           {node.isBranch && (
-            <transition {...transitionProps}>
+            <Transition {...transitionProps}>
               {this.renderSubOptionsList()}
-            </transition>
+            </Transition>
           )}
         </div>
       )

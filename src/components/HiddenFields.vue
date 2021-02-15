@@ -14,7 +14,7 @@
     inject: [ 'instance' ],
     functional: true,
 
-    render(_, context) {
+    render() {
       const instance = this.instance
 
       if (!instance.name || instance.disabled || !instance.hasValue) return null

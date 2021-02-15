@@ -1,4 +1,5 @@
 <script>
+  import { TransitionGroup } from 'vue'
   import MultiValueItem from './MultiValueItem'
   import Input from './Input'
   import Placeholder from './Placeholder'
@@ -37,19 +38,22 @@
       const { renderValueContainer } = this.$parent
       const transitionGroupProps = {
         props: {
-          tag: 'div',
-          name: 'vue-treeselect__multi-value-item--transition',
           appear: true,
         },
       }
 
       return renderValueContainer(
-        <transition-group class="vue-treeselect__multi-value" {...transitionGroupProps}>
+        <TransitionGroup
+          class="vue-treeselect__multi-value"
+          tag="div"
+          name="vue-treeselect__multi-value-item--transition"
+          appear={true}
+        >
           {this.renderMultiValueItems()}
           {this.renderExceedLimitTip()}
           <Placeholder key="placeholder" />
           <Input ref="input" key="input" />
-        </transition-group>,
+        </TransitionGroup>,
       )
     },
   }

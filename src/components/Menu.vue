@@ -1,4 +1,5 @@
 <script>
+  import { Transition } from 'vue'
   import { MENU_BUFFER } from '../constants'
   import { watchSize, setupResizeAndScrollEventListeners } from '../utils'
   import Option from './Option'
@@ -41,6 +42,12 @@
         } else {
           this.onMenuClose()
         }
+      },
+      'instance.forest': {
+        handler() {
+          this.$forceUpdate()
+        },
+        deep: true,
       },
     },
 
@@ -214,7 +221,6 @@
 
       renderNoResultsTip() {
         const { instance } = this
-
         return (
           <Tip type="no-results" icon="warning">{ instance.noResultsText }</Tip>
         )
@@ -303,9 +309,9 @@
     render() {
       return (
         <div ref="menu-container" class="vue-treeselect__menu-container" style={this.menuContainerStyle}>
-          <transition name="vue-treeselect__menu--transition">
+          <Transition name="vue-treeselect__menu--transition">
             {this.renderMenu()}
-          </transition>
+          </Transition>
         </div>
       )
     },
