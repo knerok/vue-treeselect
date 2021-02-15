@@ -124,5 +124,9 @@
   },
   "peerDependencies": {
     "vue": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/knerok/vue-treeselect.git",
   }
 }

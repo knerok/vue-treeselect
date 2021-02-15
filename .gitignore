@@ -13,3 +13,5 @@ gh-pages
 
 test/unit/coverage
 nbproject
+
+.idea

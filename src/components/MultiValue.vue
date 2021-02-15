@@ -36,11 +36,6 @@
 
     render() {
       const { renderValueContainer } = this.$parent
-      const transitionGroupProps = {
-        props: {
-          appear: true,
-        },
-      }
 
       return renderValueContainer(
         <TransitionGroup
